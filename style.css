@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css2?family=Dosis&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "dosis", sans-serif;
+  color: #1e4040;
+}
+
+header,
+footer {
+  color: #71d99e;
+}
+
+a {
+  color: #71d99e;
+}
+
+.outer-grid {
+  display: grid;
+  grid-template-rows: 70px 1fr;
+  grid-template-columns: 90px 1fr;
+  grid-template-areas:
+    "alias-header alias-header"
+    "alias-inner alias-inner";
+
+  height: 100vh;
+}
+
+.outer-expanded {
+  grid-template-areas:
+    "alias-header alias-header"
+    "alias-nav alias-inner";
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px;
+  grid-area: alias-header;
+  background-color: #1e4040;
+}
+
+.fa-bars {
+  margin-right: 10px;
+}
+
+.fa-bars:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.left-header {
+  display: flex;
+  align-items: center;
+}
+
+.right-header {
+  display: flex;
+}
+
+.header-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.header-link i {
+  font-size: 0.8rem;
+}
+
+.hidenav {
+  display: none;
+}
+nav {
+  grid-area: alias-nav;
+  background-color: rgb(0, 31, 255, 0.8);
+}
+
+.inner-grid {
+  grid-area: alias-inner;
+  background-color: rgb(0, 31, 255, 0.2);
+}
+
+/* 
+////////////////////////////////
+CSS INNER-GRID STYLES
+////////////////////////////////
+*/
+
+.inner-grid {
+  overflow-y: scroll;
+  display: grid;
+  grid-template-rows: 1fr auto 60px;
+  grid-template-columns: 1fr;
+  grid-area: alias-inner;
+  background-color: rgb(0, 31, 255, 0.2);
+  grid-template-areas:
+    "alias-main"
+    "alias-sidebar"
+    "alias-footer";
+}
+
+main {
+  grid-area: alias-main;
+  background-color: rgba(255, 122, 0);
+  height: 2000px;
+}
+
+.sideBar {
+  grid-area: alias-sidebar;
+  background-color: rgba(255, 122, 0, 0.4);
+}
+
+.footer {
+  grid-area: alias-footer;
+  background-color: #1e4040;
+}
+
+/* 
+////////////////////////////////
+Breakpoints
+////////////////////////////////
+*/
+
+@media (min-width: 576px) {
+  .hidenav {
+    display: block;
+  }
+  .outer-grid {
+    grid-template-areas:
+      "alias-header alias-header"
+      "alias-nav alias-inner";
+  }
+  .fa-bars {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .inner-grid {
+    grid-template-rows: 1fr 60px;
+    grid-template-columns: minmax(auto, 700px) 1fr;
+    grid-template-areas:
+      "alias-main alias-sidebar"
+      "alias-footer alias-footer";
+  }
+}
+
+@media (min-width: 1440px) {
+  .outer-grid{
+    grid-template-columns: 1fr 950px 1fr;
+    grid-template-areas:
+    "alias-header alias-header alias-header"
+    "alias-nav alias-inner alias-inner";
+  }
+  header {
+    display: grid;
+    grid-template-columns: 1fr 950px 1fr;
+    grid-template-areas:
+    "alias-lh . alias-rh";
+  }
+
+  .left-header {
+    grid-area: alias-lh;
+    justify-self: end;
+
+  }
+  .right-header {
+    grid-area: alias-rh;
+    justify-self: start;
+  }
+}
