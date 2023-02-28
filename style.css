@@ -80,12 +80,10 @@ header {
 }
 nav {
   grid-area: alias-nav;
-  background-color: rgb(0, 31, 255, 0.8);
 }
 
 .inner-grid {
   grid-area: alias-inner;
-  background-color: rgb(0, 31, 255, 0.2);
 }
 
 /* 
@@ -100,17 +98,22 @@ CSS INNER-GRID STYLES
   grid-template-rows: 1fr auto 60px;
   grid-template-columns: 1fr;
   grid-area: alias-inner;
-  background-color: rgb(0, 31, 255, 0.2);
   grid-template-areas:
     "alias-main"
     "alias-sidebar"
     "alias-footer";
 }
 
+h1,
+h2,
+h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
 main {
   grid-area: alias-main;
-  background-color: rgba(255, 122, 0);
-  height: 2000px;
+  padding: 20px 5%;
 }
 
 .sideBar {
@@ -121,6 +124,61 @@ main {
 .footer {
   grid-area: alias-footer;
   background-color: #1e4040;
+}
+
+.sideBar {
+  padding: 20px 5%;
+}
+
+/* 
+////////////////////////////////
+Nav styles
+///////////////////////////////
+*/
+
+nav {
+  padding-top: 20px;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.nav-link a {
+  color: #1e4040;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+/* 
+////////////////////////////////
+side-bar styles
+///////////////////////////////
+*/
+
+.sideBar {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+img {
+  border-radius: 5px;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
 }
 
 /* 
@@ -151,29 +209,38 @@ Breakpoints
       "alias-main alias-sidebar"
       "alias-footer alias-footer";
   }
+
+  .sideBar {
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+  }
 }
 
 @media (min-width: 1440px) {
-  .outer-grid{
+  .outer-grid {
     grid-template-columns: 1fr 950px 1fr;
     grid-template-areas:
-    "alias-header alias-header alias-header"
-    "alias-nav alias-inner alias-inner";
+      "alias-header alias-header alias-header"
+      "alias-nav alias-inner alias-inner";
   }
   header {
     display: grid;
     grid-template-columns: 1fr 950px 1fr;
-    grid-template-areas:
-    "alias-lh . alias-rh";
+    grid-template-areas: "alias-lh . alias-rh";
   }
 
   .left-header {
     grid-area: alias-lh;
     justify-self: end;
-
   }
   .right-header {
     grid-area: alias-rh;
     justify-self: start;
+  }
+
+  .hidenav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 15px;
   }
 }
